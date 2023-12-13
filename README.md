@@ -27,3 +27,9 @@ Instead of using lists for buckets, though, this algorithm uses one array along 
 4. The holding array is copied over to the array to be sorted.
 
 This is only possible due this radix sort being base 2; if it was in any other base, this method wouldn't work.
+
+## Compilation Instructions
+### Linux
+If you're a fellow linux NERD, you're in luck: the files in this repo without any extension are linux binaries. Please run in the terminal, though, because that's the most gui I'm putting on this project.
+### Other
+Open up this project in an IDE, and have it handle compilation of the file. You can also use a compiler if you want, but the program is still CLI, so if you're scared of using the terminal, an IDE's you're best choice. 
