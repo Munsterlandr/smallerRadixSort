@@ -7,6 +7,11 @@ int changeArray(int array[]) {
     return 0;
 }
 
+void replaceArray(int array[]) {
+    int newArray[5] = {5,2,5,3,1};
+    array = newArray; // results: this doesn't replace array vals
+}
+
 int printArray(int array[]) {
     int i;
     printf("In array: ");
@@ -20,6 +25,8 @@ int main() {
     int array[5]={1,2,3,4,5};
     printArray(array);
     changeArray(array);
+    printArray(array);
+    replaceArray(array);
     printArray(array);
     return 0;
 }

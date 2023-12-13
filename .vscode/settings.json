@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.svg": "drawio",
+        "stdlib.h": "c"
+    }
+}
