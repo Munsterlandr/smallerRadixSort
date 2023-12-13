@@ -20,8 +20,10 @@ What makes this algorithm interesting it that the big O Notation of it is linear
 This is a result of the distinction between arrays and lists. While an array can only have values of a set type and must have a set length, lists don't have a set length and can be appended to with more values. Computer memory works much like a giant array, though, so while it's easy to allocate memory for an array, allocating memory for a list (or any data structure with an unset amount of elements) is tricky. A lot of languages implement lists as Linked Lists, which store the data as nodes with pointers to the next value; this means, though, that if a List has the same number of elements as an array, the array will take up less space in memory. The only other option for lists requires you to also use the heap, this time by rewriting an array each time an element is appended to the list, and that's not much better.
 
 Instead of using lists for buckets, though, this algorithm uses one array along with some extra variables to sort into buckets. It works like this:
+
 1. If a number has 1 in the position, it is put at the lowest unassigned index (which is stored in a variable).
 2. If a number has 0 in the position, it is put at the highest unassigned index (which is stored in another variable).
 3. After the numbers have all been put in the array, the order of the ones with 0 in the currently focused on position are flipped, resulting in the same outcome as stitching together all buckets would give.
 4. The holding array is copied over to the array to be sorted.
+
 This is only possible due this radix sort being base 2; if it was in any other base, this method wouldn't work.
