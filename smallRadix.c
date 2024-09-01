@@ -8,7 +8,8 @@ Title: Optimized Base 2 Radix Sort
 // CONSTANTS
 unsigned int ONE = 1; // lets me ensure it's unsigned
 
-// INPUT
+// INPUT //
+/*gets positive number from user.*/
 unsigned int getPosNum(char prompt[]) {
     int successfullyRead;
     unsigned int output;
@@ -23,7 +24,7 @@ unsigned int getPosNum(char prompt[]) {
     return output;
 }
 
-// PROCESS
+// PROCESS //
 
 /**/
 void assignRandVals(unsigned int array[], int length) {
@@ -75,7 +76,7 @@ int confirmSorted(unsigned int array[], int length) {
     return 1;
 }
 
-// OUTPUT
+// OUTPUT //
 
 /*Prints int arrays*/
 void printArray(unsigned int array[], int len) {;
