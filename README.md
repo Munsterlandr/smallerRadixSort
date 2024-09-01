@@ -5,28 +5,27 @@ The program sorts integers from greatest to least, because that seems to be the 
 
 This should also prove to teach about radix sort, too.
 
-## What's Radix Sort?
-Radix Sort is a sorting algorithm that uses no comparisons. Instead, it uses a set of "buckets", ie lists. It works like this (in the case of sorting greatest to least):
+## Defining some terms
+* List: an ordered series of objects with no set length.
+* Array: an ordered series of objects with a set length.
+* Linked List: A method for implementing Lists where each value has a pointer to the spot in memory of the next value placed next to it, so a given value can be obtained by going a given number of nodes in.
 
-1. Check the value of each number at the lowest position (in the case of base 10, that would be the 1s place).
-2. Add it to the list for other numbers with the same value in the given position.
-3. After all numbers have been sorted by position, append all the lists together so the numbers in the highest list are in front and numbers in the lowest list are in the back.
-4. Repeat steps 1 through 3 with the next position.
-5. Repeat step 4 until all numbers are sorted.
+## Explanation
+### What's Radix Sort?
+Radix Sort is a sorting algorithm that uses no comparisons. Instead, it uses a series of lists and positional notation. Here's how it works when sorting an array from greatest to least:
 
-What makes this algorithm interesting it that the big O Notation of it is linear, which essentially means that the time taken scales at a linear rate, unlike even Quick Sort. The main thing that holds it back from being commonplace, though, is that it takes far more memory than most commonplace comparison sorts, making it so that you can't put in a big enough dataset for the lower complexity to result in faster times.
+1. Initialize a number of Lists equal to the Base you want the numbers to be sorted with. For example, if you wanted it to handle numbers in base 10, you would initialize 10 lists. Each list represents a possible value for a digit - so for base 10, that would be a zeros list, a ones list, a twos list, etc. These lists are referred to as _Buckets_.
+2. Go through the input array from the first value to the last, appending it to the Bucket asociated with the digit in the lowest position.
+3. Create a new array by Appending each bucket together, highest to least. This ensures that the given position is sorted. The old buckets can now be removed from memory.
+4. Repeat the previous three steps using the new array, but this time sorting the next highest position. This causes the sorting of the previous position to still influence the order of things, but the order of the next highest position becomes more important. While the first round would have placed 29 ahead of 51, the second round remedies this.
+5. Repeat step 4 until the highest defined position has been sorted.
 
-## What makes this implementation (potentially) more efficient?
-This is a result of the distinction between arrays and lists. While an array can only have values of a set type and must have a set length, lists don't have a set length and can be appended to with more values. Computer memory works much like a giant array, though, so while it's easy to allocate memory for an array, allocating memory for a list (or any data structure with an unset amount of elements) is tricky. A lot of languages implement lists as Linked Lists, which store the data as nodes with pointers to the next value; this means, though, that if a List has the same number of elements as an array, the array will take up less space in memory. The only other option for lists requires you to also use the heap, this time by rewriting an array each time an element is appended to the list, and that's not much better.
+Despite it being less common, its complexity scales linearly, meaning it could sort extremely large data sets far faster than comparison based sorting algorithms.
+### Why is it not used?
+The big drawback of Radix Sort is that it uses far more memory than other sorting algorithms. You'd either be using Linked Lists for the buckets, or Arrays the length of the input data. As well as this, the overhead of initializing and clearing the arrays makes it slower in practical terms.
 
-Instead of using lists for buckets, though, this algorithm uses one array along with some extra variables to sort into buckets. It works like this:
-
-1. If a number has 1 in the position, it is put at the lowest unassigned index (which is stored in a variable).
-2. If a number has 0 in the position, it is put at the highest unassigned index (which is stored in another variable).
-3. After the numbers have all been put in the array, the order of the ones with 0 in the currently focused on position are flipped, resulting in the same outcome as stitching together all buckets would give.
-4. The holding array is copied over to the array to be sorted.
-
-This is only possible due this radix sort being base 2; if it was in any other base, this method wouldn't work.
+### What makes this implementation more efficient?
+Instead of using a series of lists for buckets, it uses one array and a value.
 
 ## Compilation Instructions
 ### Linux
