@@ -25,8 +25,7 @@ Despite it being less common, its complexity scales linearly, meaning it could s
 The big drawback of Radix Sort is that it uses far more memory than other sorting algorithms. You'd either be using Linked Lists for the buckets, or Arrays the length of the input data. As well as this, the overhead of initializing and clearing the arrays makes it slower in practical terms.
 
 ### What makes this implementation more efficient?
-Instead of using a series of lists for buckets, it uses one array and a value.
-
+Instead of using a series of lists for buckets, it splits one array using one integer to specify where it goes from the high values and the low values.
 ## Compilation Instructions
 ### Linux
 If you're a fellow linux NERD, you're in luck: the files in this repo without any extension are linux binaries. Please run in the terminal, though, because that's the most gui I'm putting on this project.
